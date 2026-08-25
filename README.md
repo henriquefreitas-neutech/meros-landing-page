@@ -1,131 +1,92 @@
-# FDTE Boilerplate - Next.js
+# Meros Landing Page
 
-Este é um boilerplate moderno para desenvolvimento web usando **Next.js** com as melhores práticas e ferramentas atuais.
+Marketing landing page for **Meros** — the place where real-world experiences become shareable, bookable, and personally curated for everyone, everywhere.
 
-## 🚀 Tecnologias Utilizadas
+This repository implements the Meros landing page as a static, English-language Next.js app with fixed content and responsive layout based on the Meros design prototype.
 
-- **Next.js 15** - Framework React para produção
-- **TypeScript** - Tipagem estática para JavaScript
-- **Tailwind CSS** - Framework CSS utilitário
-- **shadcn/ui** - Componentes de UI modernos e acessíveis
-- **React Hook Form** - Gerenciamento de formulários eficiente
-- **Zod** - Validação de esquemas TypeScript-first
-- **Jotai** - Gerenciamento de estado atômico
-- **i18next** - Internacionalização (i18n)
-- **Jest** - Framework de testes
-- **Testing Library** - Utilitários para testes de componentes React
-- **Husky** - Git hooks para quality assurance
-- **ESLint + Prettier** - Linting e formatação de código
+## Origin
 
-## 📦 Estrutura do Projeto
+This project started as a fork of the **[FDTE Boilerplate - Next.js](https://github.com/fdtedsd/fdte-boilerplate-next)** (Next.js 15 + TypeScript + Tailwind CSS + shadcn/ui). The boilerplate demo pages and features were removed; the stack and tooling were kept to support the landing page.
+
+## Tech stack
+
+- **Next.js 15** — App Router, static rendering
+- **TypeScript**
+- **Tailwind CSS v4** — layout and Meros brand tokens
+- **shadcn/ui** — Button, Badge, Tabs
+- **Lucide React** — icons
+- **Jest + Testing Library** — test setup (from the original boilerplate)
+- **ESLint + Prettier + Husky** — code quality
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm start` | Run the production server |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run tests |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage |
+
+## Project structure
 
 ```
 src/
-├── app/                    # App Router do Next.js
-│   ├── globals.css        # Estilos globais
-│   ├── layout.tsx         # Layout principal
-│   └── page.tsx          # Página inicial
-├── components/            # Componentes React
-│   ├── ui/               # Componentes base do shadcn/ui
-│   ├── App.tsx          # Componente principal da aplicação
-│   ├── DemoForm.tsx     # Demonstração de formulário com validação
-│   └── ThemeToggle.tsx  # Toggle de tema claro/escuro
-├── lib/                  # Utilitários e configurações
-├── store/               # Gerenciamento de estado (Jotai)
-│   └── atoms/          # Definição dos atoms
-├── locales/            # Arquivos de tradução
-├── i18n/              # Configuração do i18next
-└── providers/         # Providers React (Context, etc.)
+├── app/
+│   ├── globals.css         # Global styles and Meros design tokens
+│   ├── layout.tsx          # Root layout (Poppins font, metadata)
+│   └── page.tsx            # Landing page entry point
+├── assets/meros/           # Landing page images from the prototype
+├── components/
+│   ├── landing/            # Landing sections, header, footer, content
+│   └── ui/                 # shadcn/ui primitives
+└── lib/
+    └── utils.ts            # Shared utilities (cn, etc.)
 ```
 
-## 🛠️ Scripts Disponíveis
+### Landing page sections
 
-- `npm run dev` - Inicia o servidor de desenvolvimento
-- `npm run build` - Cria build de produção
-- `npm start` - Inicia servidor de produção
-- `npm run lint` - Executa o linter
-- `npm test` - Executa os testes
-- `npm run test:watch` - Executa testes em modo watch
-- `npm run test:coverage` - Executa testes com relatório de cobertura
+| Section | ID | Description |
+| --- | --- | --- |
+| Hero | `#top` | Headline and app mockup |
+| Create & share | `#create` | List creation feature |
+| Discover & book | `#book` | Booking flow |
+| Creators | `#creators` | Creator and business creator panels |
+| Subscribers | `#subscribers` | Subscriber experience |
+| CTA | `#cta` | Call to action banner |
+| Footer | — | Links and copyright |
 
-## 🚀 Como Usar
+Fixed copy lives in `src/components/landing/data/landing-content.ts`.
 
-1. **Instalação das dependências:**
+## Additional documentation
 
-   ```bash
-   npm install
-   ```
+These guides come from the original boilerplate and remain useful for extending the project:
 
-2. **Executar em modo desenvolvimento:**
+- [`DESIGN_TOKENS.md`](./DESIGN_TOKENS.md) — CSS variables, Tailwind tokens, light/dark theming
+- [`INTEGRAÇÃO_SHADCN.md`](./INTEGRAÇÃO_SHADCN.md) — shadcn/ui setup and adding components
+- [`VALIDAÇÃO_EXEMPLO.md`](./VALIDAÇÃO_EXEMPLO.md) — Zod + React Hook Form patterns (reference for future forms)
 
-   ```bash
-   npm run dev
-   ```
+## Design
 
-3. **Acessar a aplicação:**
-   Abra [http://localhost:3000](http://localhost:3000) no seu navegador
+Brand colors and typography follow the Meros prototype:
 
-## ✨ Funcionalidades Incluídas
+- Primary: `#7F00FF`
+- Font: Poppins (via `next/font/google`)
+- Tokens defined in `src/app/globals.css`
 
-### 🎨 Interface de Usuário
+Mobile navigation uses a custom hamburger menu (sidebar from the right) at viewports **≤ 700px**, matching the prototype behavior.
 
-- Sistema de design consistente com shadcn/ui
-- Tema claro/escuro automático
-- Componentes responsivos e acessíveis
-- Animations suaves com Tailwind CSS
+## License
 
-### 🌍 Internacionalização
-
-- Suporte a múltiplos idiomas (PT, EN, ES)
-- Alternância dinâmica de idiomas
-- Tradução de todos os textos da interface
-
-### 📝 Formulários e Validação
-
-- Formulários tipados com React Hook Form
-- Validação robusta com Zod
-- Feedback visual de erros
-- Preview em tempo real dos dados
-
-### 🧪 Testes
-
-- Configuração completa do Jest com Next.js
-- Testing Library para testes de componentes
-- Cobertura de código automática
-- Mocks para APIs e dependências
-
-### 📊 Gerenciamento de Estado
-
-- Jotai para estado global leve
-- Estados reativos e persistentes
-- Composição atômica de estado
-
-### 🔧 Qualidade de Código
-
-- ESLint com regras rigorosas
-- Prettier para formatação automática
-- Husky para git hooks
-- TypeScript para tipagem
-
-## 🎯 Próximos Passos
-
-Este boilerplate serve como base sólida para desenvolvimento. Você pode:
-
-1. **Personalizar o tema:** Edite `src/app/globals.css` e `tailwind.config.js`
-2. **Adicionar páginas:** Crie novos arquivos em `src/app/`
-3. **Criar componentes:** Adicione em `src/components/`
-4. **Configurar APIs:** Use API Routes do Next.js em `src/app/api/`
-5. **Expandir testes:** Adicione testes em arquivos `*.test.tsx`
-
-## 📖 Documentação Adicional
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [shadcn/ui](https://ui.shadcn.com)
-- [React Hook Form](https://react-hook-form.com)
-- [Zod](https://zod.dev)
-- [Jotai](https://jotai.org)
-
----
-
-Desenvolvido com ❤️ para acelerar o desenvolvimento web moderno.
+Private project — Meros / Neutech.

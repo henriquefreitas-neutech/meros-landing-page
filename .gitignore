@@ -151,6 +151,8 @@ junit.xml
 # Temporary folders
 tmp/
 temp/
+.reference/
+public/
 
 # Build tools
 .grunt

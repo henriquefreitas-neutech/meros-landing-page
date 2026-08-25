@@ -37,10 +37,24 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-minha-cor: var(--minha-cor);
+  --color-meros-primary: var(--meros-primary);
+  --color-meros-primary-hover: var(--meros-primary-hover);
+  --color-meros-primary-subtle: var(--meros-primary-subtle);
+  --color-meros-text-strong: var(--meros-text-strong);
+  --color-meros-text-body: var(--meros-text-body);
+  --color-meros-border: var(--meros-border);
+  --color-meros-surface-subtle: var(--meros-surface-subtle);
+  --color-meros-surface-inverse: var(--meros-surface-inverse);
+  --color-meros-logo: var(--meros-logo);
+  --color-meros-logo-inset: var(--meros-logo-inset);
+  --color-meros-device: var(--meros-device);
+  --color-meros-device-ring: var(--meros-device-ring);
+  --font-poppins: var(--font-poppins);
+  --shadow-meros-float: var(--meros-shadow-float);
+  --shadow-meros-device: var(--meros-shadow-device);
+  --shadow-meros-feature: var(--meros-shadow-feature);
+  --shadow-meros-drawer: var(--meros-shadow-drawer);
 }
-
-/* Tokens padrão - podem ser sobrescritos pelos design tokens dinâmicos */
 
 :root {
   --radius: 0.625rem;
@@ -75,7 +89,23 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --minha-cor: #3b82f6;
+
+  --meros-primary: #7f00ff;
+  --meros-primary-hover: #6b0dca;
+  --meros-primary-subtle: #f4f0ff;
+  --meros-text-strong: #222222;
+  --meros-text-body: #434343;
+  --meros-border: #e6e6e6;
+  --meros-surface-subtle: #f5f5f5;
+  --meros-surface-inverse: #161616;
+  --meros-logo: #303d55;
+  --meros-logo-inset: #f7f6f6;
+  --meros-device: #0b0d12;
+  --meros-device-ring: #2a2d33;
+  --meros-shadow-float: 0 20px 44px rgb(38 55 78 / 18%);
+  --meros-shadow-device: 0 40px 84px rgb(38 55 78 / 26%);
+  --meros-shadow-feature: 0 8px 20px color-mix(in srgb, var(--meros-primary) 14%, transparent);
+  --meros-shadow-drawer: -2px 0 8px rgb(0 0 0 / 15%);
 }
 
 .dark {
@@ -110,7 +140,6 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --minha-cor: #60a5fa;
 }
 
 @layer base {
@@ -120,4 +149,33 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  html.meros-scroll-lock,
+  html.meros-scroll-lock body {
+    overflow: hidden;
+  }
+}
+
+@utility bg-meros-cta-overlay {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--meros-device) 82%, transparent),
+    color-mix(in srgb, var(--meros-device) 25%, transparent)
+  );
+}
+
+@keyframes meros-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@utility animate-meros-float {
+  animation: meros-float 7.5s ease-in-out infinite;
 }
